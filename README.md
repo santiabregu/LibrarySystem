@@ -1,0 +1,2 @@
+# odoo_communication_progress_02
+Odoo communication progress
