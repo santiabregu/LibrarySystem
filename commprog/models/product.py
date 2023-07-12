@@ -9,6 +9,7 @@ class CommprogProduct(models.Model):
     quantity = fields.Float(string='Quantity', required=True, default=0)
     purchase_price = fields.Float(string='Purchase Price', required=True, default=0)
     sale_price = fields.Float(string='Sale Price', required=True, default=0)
+    category_ids = fields.Many2many(comodel_name='commprog.category', string='Categories')
 
 
 class CommprogCategory(models.Model):
