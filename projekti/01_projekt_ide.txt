@@ -1,0 +1,5 @@
+Data 8 gusht 2023
+1. Nje prezantim i shkurter mbi projektin tuaj.
+2. Funksionalitetet qe duhen te perfshihen ne projekt.
+3. Diagrama ERD e databases per kete projekt.
+4. FLow i perdorimit te programit.
