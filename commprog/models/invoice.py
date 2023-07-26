@@ -14,6 +14,17 @@ class CommprogInvoice(models.Model):
     employee_id = fields.Many2one(comodel_name='commprog.employee', string='Employee', required=True)
     state = fields.Selection(string='State', required=True, default='draft',
                              selection=[('draft', 'Draft'), ('done', 'Done'), ('paid', 'Paid')])
+    invoice_line_ids = fields.One2many(comodel_name='commprog.invoice.line', inverse_name='invoice_id',
+                                       string='Invoice line')
+
+    def confirm(self):
+        self.state = 'done'
+
+    def pay(self):
+        self.state = 'paid'
+
+    def sent_to_draft(self):
+        self.state = 'draft'
 
 
 class CommprogInvoiceLine(models.Model):
