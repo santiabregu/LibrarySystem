@@ -8,9 +8,9 @@
             <field name="arch" type="xml">
                 <form string="Invoice">
                     <header>
-                        <button name="confirm" type="object" string="Confirm"/>
-                        <button name="pay" type="object" string="Pay"/>
-                        <button name="sent_to_draft" type="object" string="Sent to draft"/>
+                        <button name="confirm" type="object" string="Confirm" states="draft"/>
+                        <button name="pay" type="object" string="Pay" states="done"/>
+                        <button name="sent_to_draft" type="object" string="Sent to draft" states="paid"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -37,6 +37,7 @@
                                         <field name="product_id"/>
                                         <field name="quantity"/>
                                         <field name="price"/>
+                                        <field name="total" />
                                     </tree>
                                     <form>
                                         <h1>
@@ -52,6 +53,9 @@
                                         </group>
                                     </form>
                                 </field>
+                                <group>
+                                    <field name="total"/>
+                                </group>
                             </page>
                         </notebook>
                     </sheet>
