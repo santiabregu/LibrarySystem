@@ -11,7 +11,7 @@ class CommprogInvoice(models.Model):
     date = fields.Datetime(string='Date', required=True, default=lambda self: fields.Datetime.now())
     invoice_type = fields.Selection(string='Type', required=True,
                                     selection=[('in', 'Purchase'), ('out', 'Sale')])
-    client_id = fields.Many2one(comodel_name='commprog.client', string='Client')
+    client_id = fields.Many2one(comodel_name='commprog.client', string='Client')  # FK
     employee_id = fields.Many2one(comodel_name='commprog.employee', string='Employee', required=True)
     state = fields.Selection(string='State', required=True, default='draft',
                              selection=[('draft', 'Draft'), ('done', 'Done'), ('paid', 'Paid')])
@@ -45,6 +45,12 @@ class CommprogInvoice(models.Model):
     def sent_to_draft(self):
         self.state = 'draft'
 
+    def unlink(self):
+        for rec in self:
+            if rec.state != "draft":
+                raise UserError("Invoice can't be deleted!")
+        return super(CommprogInvoice, self).unlink()
+
 
 class CommprogInvoiceLine(models.Model):
     _name = 'commprog.invoice.line'
@@ -52,7 +58,7 @@ class CommprogInvoiceLine(models.Model):
 
     quantity = fields.Float(string="Quantity", default=0, required=True)
     price = fields.Float(string="Price", default=0, required=True)
-    invoice_id = fields.Many2one(comodel_name='commprog.invoice', string='Invoice', required=True)
+    invoice_id = fields.Many2one(comodel_name='commprog.invoice', string='Invoice', required=True, ondelete="cascade")
     product_id = fields.Many2one(comodel_name='commprog.product', string='Product', required=True)
     total = fields.Float(string='Total', compute="_calc_total")
 
@@ -67,3 +73,16 @@ class CommprogInvoiceLine(models.Model):
     def _calc_total(self):
         for invoice_line in self:
             invoice_line.total = invoice_line.quantity * invoice_line.price
+
+    @api.model
+    def create(self, values):
+        res = super(CommprogInvoiceLine, self).create(values)
+        if res.quantity < 0:
+            raise UserError("Quantity < 0!")
+        return res
+
+    def write(self, values):
+
+        if values['quantity'] < 0:
+            raise UserError("Quantity < 0!")
+        return super(CommprogInvoiceLine, self).write(values)
