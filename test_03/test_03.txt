@@ -1,0 +1,16 @@
+Të ndërtohen modelet të cilët do ruajnë punonjësit e një kompanie.
+
+Cdo punonjës do të ketë parametrat si më poshtë:
+	Emër, Mbiemër, ditëlindje, departament, përgjegjës, skills, nr fëmijësh,
+	ditëlindjet e fëmijëve, status (punonjës/i larguar).
+
+
+Departamentet kanë parametrat:
+	Emër departamenti, përgjegjësi, range pagash, skills primare, skills sekondare
+
+skills kanë parametrat:
+	emërtim, vlefshmëri (afat 1 vjeçar, 2, 5, dhe pa afat).
+
+Cdo punonjës ka kontrata me fushat si më pushtë.
+	datë fillimi, datë mbarimi, paga, benefitet (benefiti dhe vlera), kontrata paraardhëse,
+	statusi (draft, konfirmuar, aktive, perfunduar, anuluar).
