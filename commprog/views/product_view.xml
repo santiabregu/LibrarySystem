@@ -7,6 +7,9 @@
             <field name="model">commprog.product</field>
             <field name="arch" type="xml">
                 <form string="Product">
+                    <header>
+                        <button name="calc_cost" type="object" string="Calc Product Cost" class="btn btn-primary"/>
+                    </header>
                     <sheet>
                         <div>
                             <label for="name"/>
@@ -22,6 +25,7 @@
                             <group>
                                 <field name="purchase_price"/>
                                 <field name="sale_price"/>
+                                <field name="cost" readonly="1"/>
                             </group>
                         </group>
                     </sheet>

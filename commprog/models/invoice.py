@@ -63,6 +63,7 @@ class CommprogInvoiceLine(models.Model):
     invoice_id = fields.Many2one(comodel_name='commprog.invoice', string='Invoice', required=True, ondelete="cascade")
     product_id = fields.Many2one(comodel_name='commprog.product', string='Product', required=True)
     total = fields.Float(string='Total', compute="_calc_total")
+    date = fields.Datetime(related='invoice_id.date', string="date")
 
     @api.onchange('product_id')
     def onchange_product_id(self):
