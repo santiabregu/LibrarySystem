@@ -17,6 +17,8 @@ class CommprogInvoice(models.Model):
                              selection=[('draft', 'Draft'), ('done', 'Done'), ('paid', 'Paid')])
     invoice_line_ids = fields.One2many(comodel_name='commprog.invoice.line', inverse_name='invoice_id',
                                        string='Invoice line')
+    # invoice_line_ids2 = fields.One2many(comodel_name='commprog.invoice.line', inverse_name='invoice_id',
+    #                                    string='Invoice line 2', domain=[('quantity', '>=', 10), ('price', '>', 500)])
     total = fields.Float(string='Total', store=True, compute="_calc_total_invoice")
 
     @api.depends('invoice_line_ids')
