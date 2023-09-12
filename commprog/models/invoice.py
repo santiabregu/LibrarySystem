@@ -40,6 +40,7 @@ class CommprogInvoice(models.Model):
                 if invoice_line.product_id.quantity < invoice_line.quantity:
                     raise UserError("Quantity to low!")
                 invoice_line.product_id.quantity -= invoice_line.quantity
+            self.client_id.points += self.total * 0.01
 
     def pay(self):
         self.state = 'paid'
