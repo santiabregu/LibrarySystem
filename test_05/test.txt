@@ -1,0 +1,34 @@
+Funksione per modelin test 04.
+    Shenim: Vlera te ruhet ne nje liste pa u shfaqur ne nderfaqe.
+1.
+    Te ndertohet nje funksion i cili llogarit
+    per cdo bankomat sasine ditore te terhequr dhe sasine ditore
+    sipas monedhave te terhequra.
+2.
+    Te ndertohet nje funksion i cili gjen shumen e cila nuk
+    eshte terhequr dot per cdo dite nga cdo bankomat per arsye
+    se bankomati nuk ka pasur sasine e nevojshme te lekeve.
+
+
+Funksione per modelin test 05
+    Per cdo produkt nga nje fabrike dhe nga nje lot krijohen
+        disa njesi (item).
+    Keto njesi peshohen te gjitha pas prodhimit.
+    Cdo produkt ka nje tolerance peshe qe mund te konsiderohet
+        e tolerueshme.
+    Cdo produkt qe peshon me shume ose me pak se kjo peshe
+        konsiderohet e prishur (weight_deviation)
+1.
+    Te ndertohet nje funksion i cili per cdo produkt gjen rreshtat te
+    cilat nuk jane kontrolluar (controlled) dhe fuhsa (refuse) gjen nese
+    produkti eshte i rregullt (False) apo i prishur (True).
+2.
+    Te ndertohet nje funksion i cili krijon rreshtat e kualitetit
+    per cdo produkt, fabrike, lot (test_05.products.quality).
+    Per krijimin perdoret funksioni create si me poshte
+    self.env['test_05.products.quality'].create({
+                                            'name': value
+                                            'ratio': value
+                                            'factory_id': value
+                                            'lot_id': value
+                                        })
