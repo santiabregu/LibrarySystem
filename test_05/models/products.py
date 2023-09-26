@@ -50,7 +50,7 @@ class Test05ProductItem(models.Model):
     lot_id = fields.Many2one(comodel_name='test_05.production.lot', string='Lot', required=True)
     weight = fields.Float(string='Weight')
     refuse = fields.Boolean(string='Refuse', required=True, default=False)
-    controlled = fields.Boolean(string='Refuse', required=True, default=False)
+    controlled = fields.Boolean(string='Controlled', required=True, default=False)
 
 
 class Test05ProductQuality(models.Model):
