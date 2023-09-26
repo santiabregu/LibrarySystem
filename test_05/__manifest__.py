@@ -6,8 +6,7 @@
     'category': 'Test',
     'author': 'Author',
     'website': 'Website',
-    'license': 'License',
-    'depends': ['Depends'],
+    'depends': ['base'],
     'data': [
         'views/products_view.xml',
         'views/product_item.xml',
