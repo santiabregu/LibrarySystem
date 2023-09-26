@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+commprog_product,commprog.product,commprog.model_commprog_product,base.group_user,1,1,1,1
+commprog_category,commprog.category,commprog.model_commprog_category,base.group_user,1,1,1,1
+commprog_client,commprog.client,commprog.model_commprog_client,base.group_user,1,1,1,1
+commprog_employee,commprog.employee,commprog.model_commprog_employee,base.group_user,1,1,1,1
+commprog_invoice,commprog.invoice,commprog.model_commprog_invoice,base.group_user,1,1,1,1
+commprog_invoice_line,commprog.invoice.line,commprog.model_commprog_invoice_line,base.group_user,1,1,1,1
+commprog_shop_product,commprog.shop.product,commprog.model_commprog_product,commprog.shop_user,1,1,1,1
+commprog_shop_category,commprog.shop.category,commprog.model_commprog_category,commprog.shop_user,1,1,1,1
+commprog_shop_client,commprog.shop.client,commprog.model_commprog_client,commprog.shop_user,1,1,1,1
+commprog_shop_employee,commprog.shop.employee,commprog.model_commprog_employee,commprog.shop_user,1,1,1,1
+commprog_shop_invoice,commprog.shop.invoice,commprog.model_commprog_invoice,commprog.shop_user,1,1,1,1
+commprog_shop_invoice_line,commprog.shop.invoice.line,commprog.model_commprog_invoice_line,commprog.shop_user,1,1,1,1

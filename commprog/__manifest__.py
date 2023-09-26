@@ -5,9 +5,11 @@
     'description': 'Description',
     'category': 'commprog',
     'author': 'Author',
-    'website': 'Website',
+    'website': 'web',
     'depends': ['base'],
     'data': [
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'views/client_view.xml',
         'views/employee_view.xml',
         'views/category_view.xml',

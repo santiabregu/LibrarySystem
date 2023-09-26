@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="factory_form_view" model="ir.ui.view">
+            <field name="name">test_05.factory.form</field>
+            <field name="model">test_05.factory</field>
+            <field name="arch" type="xml">
+                <form string="Factory">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="capacity"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="factory_tree_view" model="ir.ui.view">
+            <field name="name">test_05.factory.tree</field>
+            <field name="model">test_05.factory</field>
+            <field name="arch" type="xml">
+                <tree string="Factory">
+                    <field name="name"/>
+                    <field name="capacity"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="factory_search_view" model="ir.ui.view">
+            <field name="name">test_05.factory.search</field>
+            <field name="model">test_05.factory</field>
+            <field name="arch" type="xml">
+                <search string="Factory">
+                    <field name="name"/>
+                    <field name="capacity"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="factory_act_window" model="ir.actions.act_window">
+            <field name="name">Factory</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">test_05.factory</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Factory.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Factory" id="factory_menu" parent="test_05_root_menu" action="factory_act_window"/>
+
+    </data>
+</odoo>
