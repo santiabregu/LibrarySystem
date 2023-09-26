@@ -16,7 +16,11 @@ class Test05Products(models.Model):
         """
         pass
 
-
+    def create_quality_lines(self):
+        """ Per cdo lot_id, factory_id per kete
+        produkt krijohet nje rresht quality i
+        cili ruan ratio, factory_id, produc_id, lot_id"""
+        pass
 
 
 class Test05Factory(models.Model):
