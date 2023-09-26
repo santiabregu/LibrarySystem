@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <record id="product.item_form_view" model="ir.ui.view">
+        <record id="product_item_form_view" model="ir.ui.view">
             <field name="name">test_05.product.item.form</field>
             <field name="model">test_05.product.item</field>
             <field name="arch" type="xml">
@@ -26,7 +26,7 @@
             </field>
         </record>
 
-        <record id="product.item_tree_view" model="ir.ui.view">
+        <record id="product_item_tree_view" model="ir.ui.view">
             <field name="name">test_05.product.item.tree</field>
             <field name="model">test_05.product.item</field>
             <field name="arch" type="xml">
@@ -40,7 +40,7 @@
             </field>
         </record>
 
-        <record id="product.item_search_view" model="ir.ui.view">
+        <record id="product_item_search_view" model="ir.ui.view">
             <field name="name">test_05.product.item.search</field>
             <field name="model">test_05.product.item</field>
             <field name="arch" type="xml">
@@ -56,7 +56,7 @@
             </field>
         </record>
 
-        <record id="product.item_act_window" model="ir.actions.act_window">
+        <record id="product_item_act_window" model="ir.actions.act_window">
             <field name="name">ProductItem</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">test_05.product.item</field>
@@ -68,8 +68,8 @@
             </field>
         </record>
 
-        <menuitem name="ProductItem" id="product.item_menu" parent="test_05_root_menu"
-                  action="product.item_act_window"/>
+        <menuitem name="ProductItem" id="product_item_menu" parent="test_05_root_menu"
+                  action="product_item_act_window"/>
 
     </data>
 </odoo>

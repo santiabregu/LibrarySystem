@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <record id="products.quality_form_view" model="ir.ui.view">
+        <record id="products_quality_form_view" model="ir.ui.view">
             <field name="name">test_05.products.quality.form</field>
             <field name="model">test_05.products.quality</field>
             <field name="arch" type="xml">
@@ -23,7 +23,7 @@
             </field>
         </record>
 
-        <record id="products.quality_tree_view" model="ir.ui.view">
+        <record id="products_quality_tree_view" model="ir.ui.view">
             <field name="name">test_05.products.quality.tree</field>
             <field name="model">test_05.products.quality</field>
             <field name="arch" type="xml">
@@ -36,7 +36,7 @@
             </field>
         </record>
 
-        <record id="products.quality_search_view" model="ir.ui.view">
+        <record id="products_quality_search_view" model="ir.ui.view">
             <field name="name">test_05.products.quality.search</field>
             <field name="model">test_05.products.quality</field>
             <field name="arch" type="xml">
@@ -49,7 +49,7 @@
             </field>
         </record>
 
-        <record id="products.quality_act_window" model="ir.actions.act_window">
+        <record id="products_quality_act_window" model="ir.actions.act_window">
             <field name="name">Products Quality</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">test_05.products.quality</field>
@@ -61,8 +61,8 @@
             </field>
         </record>
 
-        <menuitem name="Products Quality" id="products.quality_menu" parent="test_05_root_menu"
-                  action="products.quality_act_window"/>
+        <menuitem name="Products Quality" id="products_quality_menu" parent="test_05_root_menu"
+                  action="products_quality_act_window"/>
 
     </data>
 </odoo>

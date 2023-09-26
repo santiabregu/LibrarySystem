@@ -2,7 +2,7 @@
 <odoo>
     <data>
 
-        <record id="production.lot_form_view" model="ir.ui.view">
+        <record id="production_lot_form_view" model="ir.ui.view">
             <field name="name">test_05.production.lot.form</field>
             <field name="model">test_05.production.lot</field>
             <field name="arch" type="xml">
@@ -22,7 +22,7 @@
             </field>
         </record>
 
-        <record id="production.lot_tree_view" model="ir.ui.view">
+        <record id="production_lot_tree_view" model="ir.ui.view">
             <field name="name">test_05.production.lot.tree</field>
             <field name="model">test_05.production.lot</field>
             <field name="arch" type="xml">
@@ -34,7 +34,7 @@
             </field>
         </record>
 
-        <record id="production.lot_search_view" model="ir.ui.view">
+        <record id="production_lot_search_view" model="ir.ui.view">
             <field name="name">test_05.production.lot.search</field>
             <field name="model">test_05.production.lot</field>
             <field name="arch" type="xml">
@@ -46,7 +46,7 @@
             </field>
         </record>
 
-        <record id="production.lot_act_window" model="ir.actions.act_window">
+        <record id="production_lot_act_window" model="ir.actions.act_window">
             <field name="name">Production Lot</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">test_05.production.lot</field>
@@ -58,8 +58,8 @@
             </field>
         </record>
 
-        <menuitem name="Production Lot" id="production.lot_menu" parent="test_05_root_menu"
-                  action="production.lot_act_window"/>
+        <menuitem name="Production Lot" id="production_lot_menu" parent="test_05_root_menu"
+                  action="production_lot_act_window"/>
 
     </data>
 </odoo>
