@@ -14,7 +14,19 @@ class Test05Products(models.Model):
         """ Kap te gjitha item te produktit qe nuk jane
             kontrolluar (controlled) dhe modifikon fushen (refuse)
         """
-        pass
+        # not_controlled = self.env['test_05.product.item'].search([('name', '=', self.id), ('controlled', '=', False)])
+        min_weight = self.weight - self.weight_deviation
+        max_weight = self.weight + self.weight_deviation
+        # for item in not_controlled:
+        #     item.controlled = True
+        #     if not (min_weight < item.weight < max_weight):
+        #         item.refuse = True
+        not_refused_items = self.env['test_05.product.item'].search([('name', '=', self.id), ('controlled', '=', False), ('weight', '>', min_weight), ('weight', '<', max_weight)])
+        not_refused_items.write({'controlled': True})
+        refused_items = self.env['test_05.product.item'].search(
+            [('name', '=', self.id), ('controlled', '=', False), '|', ('weight', '<', min_weight),
+             ('weight', '>', max_weight)])
+        refused_items.write({'controlled': True, 'refused': True})
 
     def create_quality_lines(self):
         """ Per cdo lot_id, factory_id per kete
