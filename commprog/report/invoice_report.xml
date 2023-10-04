@@ -19,40 +19,26 @@
                 <table class="table table-condensed table-bordered">
                     <thead>
                         <tr>
-                            <th>Produkt</th>
-                            <th>Sasi</th>
-                            <th>Cmim</th>
-                            <th>Total</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Sell</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <t t-set="grand_total" t-value="0"/>
                         <t t-foreach="docs" t-as="o">
                             <tr>
                                 <td>
-                                    <span t-esc="o['produkt']"/>
+                                    <span t-esc="o['product']"/>
                                 </td>
                                 <td>
-                                    <span t-esc="o['sasi']"/>
+                                    <span t-esc="o['quantity']"/>
                                 </td>
                                 <td>
-                                    <span t-esc="o['cmimi']"/>
+                                    <span t-esc="o['sell']"/>
                                 </td>
-                                <td>
-                                    <span t-esc="o['total']"/>
-                                </td>
-                                <t t-set="grand_total" t-value="grand_total+o['total']"/>
                             </tr>
                         </t>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3" align="right"><h5>Total</h5></td>
-                            <td>
-                                <h5 t-esc="grand_total"/>
-                            </td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </t>

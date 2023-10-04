@@ -6,7 +6,6 @@
     'category': 'commprog',
     'author': 'Author',
     'website': 'web',
-    'license': '',
     'depends': ['commprog'],
     'data': ['views/product_view.xml'],
     'demo': [],
