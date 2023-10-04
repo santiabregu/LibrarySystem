@@ -32,7 +32,25 @@ class Test05Products(models.Model):
         """ Per cdo lot_id, factory_id per kete
         produkt krijohet nje rresht quality i
         cili ruan ratio, factory_id, produc_id, lot_id"""
-        pass
+        factories = self.env['test_05.factory'].search([])
+        lots = self.env['test_05.production.lot'].search([])
+        for factory in factories:
+            for lot in lots:
+                # items = self.env['test_05.product.item'].search([('factory_id', '=', factory.id), ('lot_id', '=', lot.id), ('name', '=', self.id)])
+                # 1
+                # count = 0
+                # count_ok = 0
+                # for item in items:
+                #     if not item.refused:
+                #         count_ok += 1
+                #     count += 1
+                # 2
+                # count = len(items)
+                # count_ok = len(items.filtered(lambda x: not x.refuzed))
+                count = self.env['test_05.product.item'].search_count([('factory_id', '=', factory.id), ('lot_id', '=', lot.id), ('name', '=', self.id)])
+                count_ok = self.env['test_05.product.item'].search_count([('factory_id', '=', factory.id), ('lot_id', '=', lot.id), ('name', '=', self.id), ('refused', '=', False)])
+                ratio = count_ok / count
+                self.env['test_05.products.quality'].create({'name': self.id, 'factory_id': factory.id, 'lot_id': lot.id, 'ratio': ratio})
 
 
 class Test05Factory(models.Model):
