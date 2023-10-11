@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="action_sales_report" model="ir.actions.report">
+            <field name="name">Sales Report</field>
+            <field name="model">commprog.invoice.line</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">commprog.sales_report</field>
+            <field name="report_file">sales_report</field>
+        </record>
+
+        <template id="report_sales">
+            <t t-set="data_report_landscape" t-value="True"/>
+            <t t-set="full_width" t-value="True"/>
+            <t t-call="web.html_container">
+                <h3 t-esc="r_name"/>
+                <div>
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th colspan="2">Janar</th>
+                                <th colspan="2">Shkurt</th>
+                                <th colspan="2">Mars</th>
+                                <th colspan="2">Prill</th>
+                                <th colspan="2">Maj</th>
+                                <th colspan="2">Qershor</th>
+                                <th colspan="2">Korrik</th>
+                                <th colspan="2">Gusht</th>
+                                <th colspan="2">Shtator</th>
+                                <th colspan="2">Tetor</th>
+                                <th colspan="2">Nentor</th>
+                                <th colspan="2">Dhjetor</th>
+                                <th colspan="2">Quantity</th>
+                            </tr>
+                            <tr>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                                <tr>
+                                    <td>
+                                        <span t-esc="o[1]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][0]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][0]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][1]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][1]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][2]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][2]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][3]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][3]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][4]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][4]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][5]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][5]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][6]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][6]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][7]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][7]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][8]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][8]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][9]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][9]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][10]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][10]['total']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][11]['quantity']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="docs[o][11]['total']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

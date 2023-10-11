@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    <record id="sales_report_wizard" model="ir.ui.view">
+            <field name="name">Sales Report</field>
+            <field name="model">sales.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Report">
+                    <group>
+                        <field name="product_ids" widget="many2many_tags"/>
+                        <field name="year"/>
+                    </group>
+                    <footer>
+                        <button name="print_report"
+                                string="Print"
+                                type="object"
+                                data-hotkey="q"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sales_report_wizard" model="ir.actions.act_window">
+            <field name="name">Sales report action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sales.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sales_report_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_sales_report_wizard" name="Sales Report" parent="commprog.commprog_root"
+                  action="action_sales_report_wizard" sequence="110"/>
+
+    </data>
+</odoo>
