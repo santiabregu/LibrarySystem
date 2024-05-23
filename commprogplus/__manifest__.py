@@ -1,6 +1,6 @@
 {
     'name': 'Commprog plus',
-    'version': 'Version',
+    'version': '1.0',
     'summary': 'Summery',
     'description': 'Plus',
     'category': 'commprog',
