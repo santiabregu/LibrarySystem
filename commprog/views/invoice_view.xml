@@ -8,9 +8,9 @@
             <field name="arch" type="xml">
                 <form string="Invoice">
                     <header>
-                        <button name="confirm" type="object" string="Confirm" states="draft"/>
-                        <button name="pay" type="object" string="Pay" states="done"/>
-                        <button name="sent_to_draft" type="object" string="Sent to draft" states="paid"/>
+                        <button name="confirm" type="object" string="Confirm"/>
+                        <button name="pay" type="object" string="Pay"/>
+                        <button name="sent_to_draft" type="object" string="Sent to draft"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
@@ -27,7 +27,6 @@
                             </group>
                             <group>
                                 <field name="client_id"/>
-<!--                                <field name="employee_id" attrs="{'invisible': [('invoice_type', '=', 'in')]}"/>-->
                                 <field name="employee_id" />
                             </group>
                         </group>
@@ -59,32 +58,6 @@
                                 </group>
                             </page>
 
-<!--                            <page name="products2" string="Products 2">-->
-<!--                                <field name="invoice_line_ids2">-->
-<!--                                    <tree>-->
-<!--                                        <field name="product_id"/>-->
-<!--                                        <field name="quantity"/>-->
-<!--                                        <field name="price"/>-->
-<!--                                        <field name="total" />-->
-<!--                                    </tree>-->
-<!--                                    <form>-->
-<!--                                        <h1>-->
-<!--                                            <field name="product_id"/>-->
-<!--                                        </h1>-->
-<!--                                        <group>-->
-<!--                                            <group>-->
-<!--                                                <field name="quantity"/>-->
-<!--                                            </group>-->
-<!--                                            <group>-->
-<!--                                                <field name="price"/>-->
-<!--                                            </group>-->
-<!--                                        </group>-->
-<!--                                    </form>-->
-<!--                                </field>-->
-<!--                                <group>-->
-<!--                                    <field name="total"/>-->
-<!--                                </group>-->
-<!--                            </page>-->
                         </notebook>
                     </sheet>
                 </form>
