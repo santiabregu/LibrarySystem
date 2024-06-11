@@ -160,4 +160,5 @@ cython_debug/
 #.idea/
 test*/
 projekti/
-temp*/
+temp/
+co_others/
