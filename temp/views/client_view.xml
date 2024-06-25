@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="client_form_view" model="ir.ui.view">
+            <field name="name">commprog.client.form</field>
+            <field name="model">commprog.client</field>
+            <field name="arch" type="xml">
+                <form string="Client">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <label for="surname"/>
+                            <h1>
+                                <field name="name" placeholder="Name"/>
+                                <field name="surname" placeholder="Surname"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="tel"/>
+                                <field name="email"/>
+                            </group>
+
+                            <group>
+                                <field name="nid"/>
+                                <field name="points"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="client_tree_view" model="ir.ui.view">
+            <field name="name">commprog.client.tree</field>
+            <field name="model">commprog.client</field>
+            <field name="arch" type="xml">
+                <tree string="Client">
+                    <field name="name"/>
+                    <field name="surname"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="client_search_view" model="ir.ui.view">
+            <field name="name">commprog.client.search</field>
+            <field name="model">commprog.client</field>
+            <field name="arch" type="xml">
+                <search string="Client">
+                    <field name="name"/>
+                    <field name="surname"/>
+                    <field name="tel"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="client_act_window" model="ir.actions.act_window">
+            <field name="name">Client</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">commprog.client</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Client.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="commprog_root" name="CP" sequence="10"/>
+        <menuitem name="Client" id="client_menu" parent="commprog_root" action="client_act_window"/>
+
+    </data>
+</odoo>

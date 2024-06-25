@@ -1,0 +1,20 @@
+{
+    'name': 'Communication Progress Temp',
+    'version': '1.0',
+    'summary': 'Summery',
+    'description': 'Description',
+    'category': 'Category',
+    'author': 'Author',
+    'website': 'Website',
+    'depends': ['base'],
+    'data': [
+        'views\client_view.xml',
+        'views\employee_view.xml',
+        'views\product_view.xml',
+        'views\category_view.xml',
+        'views\invoice_view.xml',
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}

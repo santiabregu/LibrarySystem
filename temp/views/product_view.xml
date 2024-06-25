@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_form_view" model="ir.ui.view">
+            <field name="name">commprog.product.form</field>
+            <field name="model">commprog.product</field>
+            <field name="arch" type="xml">
+                <form string="Product">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="product"/>
+                            <h1>
+                                <field name="product" placeholder="Product"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="quantity"/>
+                                <field name="in_price"/>
+                                <field name="out_price"/>
+                            </group>
+                            <group>
+                                <field name="barcode"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_tree_view" model="ir.ui.view">
+            <field name="name">commprog.product.tree</field>
+            <field name="model">commprog.product</field>
+            <field name="arch" type="xml">
+                <tree string="Product">
+                    <field name="product"/>
+                    <field name="out_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="product_search_view" model="ir.ui.view">
+            <field name="name">commprog.product.search</field>
+            <field name="model">commprog.product</field>
+            <field name="arch" type="xml">
+                <search string="Product">
+                    <field name="product"/>
+                    <field name="barcode"/>
+                    <field name="quantity"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="product_act_window" model="ir.actions.act_window">
+            <field name="name">Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">commprog.product</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Product.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="product_root" name="Product" parent="commprog_root" sequence="20"/>
+        <menuitem name="Product" id="product_menu" parent="product_root" action="product_act_window" sequence="20"/>
+
+    </data>
+</odoo>

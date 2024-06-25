@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="invoice_form_view" model="ir.ui.view">
+            <field name="name">commprog.invoice.form</field>
+            <field name="model">commprog.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Invoice">
+                    <header>
+                        <button name="action_done" type="object" string="Move to done" class="btn-secondary"
+                                invisible="state!='draft'"/>
+                        <button name="action_paid" type="object" string="Move to paid" class="btn-primary"
+                                invisible="state!='done'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="paid"/>
+                    </header>
+                    <sheet>
+
+                        <div class="oe_title">
+                            <label for="code"/>
+                            <h1>
+                                <field name="code" placeholder="Title"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date" readonly="state!='draft'"/>
+                                <field name="in_out" readonly="state!='draft'"/>
+                                <field name="pay_method" readonly="state!='draft'" widget="radio"/>
+                            </group>
+                            <group>
+                                <field name="client_id" readonly="state!='draft'"/>
+                                <field name="employee_id" readonly="state!='draft'"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page name="invoice_line" string="Invoice line">
+                                <field name="invoice_line_ids" readonly="state!='draft'">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="qty"/>
+                                        <field name="price"/>
+                                        <field name="total"/>
+                                    </tree>
+                                    <form>
+                                        <group>
+                                            <group>
+                                                <field name="product_id"/>
+                                            </group>
+                                            <group>
+                                                <field name="qty"/>
+                                                <field name="price"/>
+                                                <field name="total"/>
+                                            </group>
+                                        </group>
+                                    </form>
+                                </field>
+                                <field name="total"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="invoice_tree_view" model="ir.ui.view">
+            <field name="name">commprog.invoice.tree</field>
+            <field name="model">commprog.invoice</field>
+            <field name="arch" type="xml">
+                <tree string="Invoice">
+                    <field name="code"/>
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="client_id"/>
+                    <field name="total"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="invoice_search_view" model="ir.ui.view">
+            <field name="name">commprog.invoice.search</field>
+            <field name="model">commprog.invoice</field>
+            <field name="arch" type="xml">
+                <search string="Invoice">
+                    <field name="code"/>
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="client_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="invoice_act_window" model="ir.actions.act_window">
+            <field name="name">Invoice</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">commprog.invoice</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Invoice.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Invoice" id="invoice_menu" parent="commprog_root" action="invoice_act_window"/>
+
+    </data>
+</odoo>
