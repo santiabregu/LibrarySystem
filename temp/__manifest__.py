@@ -8,6 +8,7 @@
     'website': 'Website',
     'depends': ['base'],
     'data': [
+        'data\invoice_sequence.xml',
         'views\client_view.xml',
         'views\employee_view.xml',
         'views\product_view.xml',

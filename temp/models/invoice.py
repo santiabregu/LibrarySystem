@@ -6,7 +6,7 @@ class CommprogInvoice(models.Model):
     _description = 'Description'
     _rec_name = 'code'
 
-    code = fields.Char(string='Code', required=True)
+    code = fields.Char(string='Code', required=True, default='New')
     total = fields.Float(string='Total', compute='_calc_total', store=True)
     date = fields.Date(string='Date', required=True)
     in_out = fields.Boolean(string='In/Out', required=True)
@@ -45,6 +45,20 @@ class CommprogInvoice(models.Model):
     def onchange_invoice_type(self):
         for invoice_line in self.invoice_line_ids:
             invoice_line._onchange_product()
+
+    @api.model
+    def create(self, values):
+        if values['in_out']:
+            code = self.env['ir.sequence'].next_by_code('in.invoice.cp')
+        else:
+            code = self.env['ir.sequence'].next_by_code('out.invoice.cp')
+        values['code'] = code
+        res = super(CommprogInvoice, self).create(values)
+        return res
+
+    def write(self, values):
+        res = super(CommprogInvoice, self).write(values)
+        return res
 
 
 class CommprogInvoiceLine(models.Model):
