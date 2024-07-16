@@ -30,6 +30,7 @@
                             </group>
                             <group>
                                 <field name="client_id" readonly="state!='draft'"/>
+                                <field name="points" invisible="[('in_out', '=', True)]"/>
                                 <field name="employee_id" readonly="state!='draft'"/>
                             </group>
                         </group>

@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import UserError
 
 
 class CommprogInvoice(models.Model):
@@ -11,6 +12,7 @@ class CommprogInvoice(models.Model):
     date = fields.Date(string='Date', required=True)
     in_out = fields.Boolean(string='In/Out', required=True)
     client_id = fields.Many2one(comodel_name='commprog.client', string='Client', required=True)
+    points = fields.Float(string='Points', related='client_id.points', readonly=True)
     employee_id = fields.Many2one(comodel_name='commprog.employee', string='Employee', required=True)
     state = fields.Selection(string='State', selection=[('draft', 'Draft'), ('done', 'Done'), ('paid', 'Paid')],
                              default='draft')
@@ -58,6 +60,13 @@ class CommprogInvoice(models.Model):
 
     def write(self, values):
         res = super(CommprogInvoice, self).write(values)
+        return res
+
+    def unlink(self):
+        for invoice in self:
+            if invoice.state != 'draft':
+                raise UserError('Invoice can not be deleted')
+        res = super(CommprogInvoice, self).unlink()
         return res
 
 
