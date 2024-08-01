@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="action_report_invoice" model="ir.actions.report">
+            <field name="name">Product Routes Report</field>
+            <field name="model">commprog.invoice.line</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">temp.report_invoice</field>
+            <field name="report_file">commprog</field>
+        </record>
+
+        <template id="report_invoice">
+            <t t-set="data_report_landscape" t-value="True"/>
+            <t t-set="full_width" t-value="True"/>
+            <t t-call="web.html_container">
+                <h3 t-esc="r_name"/>
+                <div>
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                                <tr>
+                                    <td>
+                                        <span t-esc="o['product']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['qty']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['price']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['total']"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

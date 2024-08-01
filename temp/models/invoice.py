@@ -78,6 +78,7 @@ class CommprogInvoiceLine(models.Model):
     qty = fields.Float(string='Qty', required=True, default=1)
     price = fields.Float(string='Price', required=True)
     total = fields.Float(string='Total', compute='_calc_total')
+    date = fields.Date(string='Date', related='invoice_id.date')
 
     @api.onchange('product_id')
     def _onchange_product(self):

@@ -14,6 +14,9 @@
         'views\product_view.xml',
         'views\category_view.xml',
         'views\invoice_view.xml',
+        'wizard\invoice_report_view.xml',
+        'wizard\product_report_view.xml',
+        'report\invoice_report.xml'
     ],
     'installable': True,
     'auto_install': False,
