@@ -14,34 +14,48 @@
             <t t-set="data_report_landscape" t-value="True"/>
             <t t-set="full_width" t-value="True"/>
             <t t-call="web.html_container">
-                <h3 t-esc="r_name"/>
                 <div>
                     <table class="table table-condensed table-bordered">
                         <thead>
                             <tr>
                                 <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Total</th>
+                                <th>Quantity In</th>
+                                <th>Value In</th>
+                                <th>Quantity Out</th>
+                                <th>Value Out</th>
+                                <th>Profit</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <t t-set="total" t-value="0"/>
                             <t t-foreach="docs" t-as="o">
+                                <t t-set="total" t-value="total+o['profit']"/>
                                 <tr>
                                     <td>
-                                        <span t-esc="o['product']"/>
+                                        <span t-esc="o['name']"/>
                                     </td>
                                     <td>
-                                        <span t-esc="o['qty']"/>
+                                        <span t-esc="o['qty_in']"/>
                                     </td>
                                     <td>
-                                        <span t-esc="o['price']"/>
+                                        <span t-esc="o['value_in']"/>
                                     </td>
                                     <td>
-                                        <span t-esc="o['total']"/>
+                                        <span t-esc="o['qty_out']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['value_out']"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="o['profit']"/>
                                     </td>
                                 </tr>
                             </t>
+                            <tr>
+                                <td colspan="6" align="right">
+                                    <span t-esc="total"/>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

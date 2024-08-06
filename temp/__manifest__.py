@@ -16,7 +16,9 @@
         'views\invoice_view.xml',
         'wizard\invoice_report_view.xml',
         'wizard\product_report_view.xml',
-        'report\invoice_report.xml'
+        'report\invoice_report.xml',
+        'report\product_report.xml',
+        'security\ir.model.access.csv',
     ],
     'installable': True,
     'auto_install': False,

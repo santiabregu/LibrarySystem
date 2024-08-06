@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+commprog_product,commprog.product,temp.model_commprog_product,base.group_user,1,1,1,1
+commprog_category,commprog.category,temp.model_commprog_category,base.group_user,1,1,1,1
+commprog_client,commprog.client,temp.model_commprog_client,base.group_user,1,1,1,1
+commprog_employee,commprog.employee,temp.model_commprog_employee,base.group_user,1,1,1,1
+commprog_invoice,commprog.invoice,temp.model_commprog_invoice,base.group_user,1,1,1,1
+commprog_invoice_line,commprog.invoice.line,temp.model_commprog_invoice_line,base.group_user,1,1,1,1
