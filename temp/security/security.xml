@@ -8,14 +8,15 @@
 
         <record model="res.groups" id="shop_user">
             <field name="name">Shop User</field>
-            <field name="category_id" ref="module_commprog_category"/>
+            <field name="category_id" ref="temp.module_commprog_category"/>
         </record>
 
         <record id="see_his_own_shop" model="ir.rule">
             <field name="name">See his own shop</field>
             <field ref="model_commprog_invoice" name="model_id"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="domain_force">[('employee_id.user_id', '=', user.id)]</field>
             <field name="groups" eval="[(4, ref('shop_user'))]"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
     </data>
 </odoo>

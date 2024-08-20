@@ -10,3 +10,4 @@ class CommprogEmployee(models.Model):
     role = fields.Selection(string='Role', selection=[('manager', 'Manager'), ('seller', 'Seller'), ], required=True)
     salary = fields.Float(string='Salary', required=True)
     bonus = fields.Float(string='Bonus')
+    user_id = fields.Many2one(comodel_name='res.users')

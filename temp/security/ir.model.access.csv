@@ -5,3 +5,9 @@ commprog_client,commprog.client,temp.model_commprog_client,base.group_user,1,1,1
 commprog_employee,commprog.employee,temp.model_commprog_employee,base.group_user,1,1,1,1
 commprog_invoice,commprog.invoice,temp.model_commprog_invoice,base.group_user,1,1,1,1
 commprog_invoice_line,commprog.invoice.line,temp.model_commprog_invoice_line,base.group_user,1,1,1,1
+commprog_product_shop,commprog.product.shop,temp.model_commprog_product,temp.shop_user,1,0,0,0
+commprog_category_shop,commprog.category.shop,temp.model_commprog_category,temp.shop_user,1,0,0,0
+commprog_client_shop,commprog.client.shop,temp.model_commprog_client,temp.shop_user,1,1,1,0
+commprog_employee_shop,commprog.employee.shop,temp.model_commprog_employee,temp.shop_user,1,0,0,0
+commprog_invoice_shop,commprog.invoice.shop,temp.model_commprog_invoice,temp.shop_user,1,1,1,0
+commprog_invoice_line_shop,commprog.invoice.line.shop,temp.model_commprog_invoice_line,temp.shop_user,1,1,1,1
