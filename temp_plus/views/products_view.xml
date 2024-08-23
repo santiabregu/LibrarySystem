@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_form_inherit" model="ir.ui.view">
+            <field name="name">commprog.product.form</field>
+            <field name="model">commprog.product</field>
+            <field name="inherit_id" ref="temp.product_form_view"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <field name="barcode" position="after">
+                    <field name="description"/>
+                </field>
+<!--                <xpath expr="//field[@name='barcode']" position="after">-->
+<!--                    <field name="description"/>-->
+<!--                </xpath>-->
+            </field>
+        </record>
+    </data>
+</odoo>

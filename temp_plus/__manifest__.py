@@ -1,0 +1,15 @@
+{
+    'name': 'Communication Progress Temp Plus',
+    'version': '1.0',
+    'summary': 'Summery',
+    'description': 'Description',
+    'category': 'Category',
+    'author': 'Author',
+    'website': 'Website',
+    'license': 'LGPL-3',
+    'depends': ['temp'],
+    'data': ['views/products_view.xml'],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}
