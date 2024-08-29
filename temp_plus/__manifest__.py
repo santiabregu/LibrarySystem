@@ -8,7 +8,7 @@
     'website': 'Website',
     'license': 'LGPL-3',
     'depends': ['temp'],
-    'data': ['views/products_view.xml'],
+    'data': ['views/products_view.xml', 'views/employee_view.xml'],
     'installable': True,
     'auto_install': False,
     'application': True,

@@ -5,8 +5,8 @@
         <record id="action_report_invoice" model="ir.actions.report">
             <field name="name">Product Routes Report</field>
             <field name="model">commprog.invoice.line</field>
-            <field name="report_type">qweb-html</field>
             <field name="report_name">commprog.report_invoice</field>
+            <field name="report_type">qweb-html</field>
             <field name="report_file">commprog</field>
         </record>
 

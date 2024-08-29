@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="employee_form_inherit" model="ir.ui.view">
+            <field name="name">temp_plus.employee.form</field>
+            <field name="model">commprog.employee</field>
+            <field name="inherit_id" ref="temp.employee_form_view"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <notebook>
+                        <page string="Invoices">
+                            <field name="invoice_ids" readonly="1">
+                                <tree>
+                                    <field name="code"/>
+                                    <field name="date"/>
+                                    <field name="client_id"/>
+                                    <field name="total"/>
+                                </tree>
+                            </field>
+                            <field name="total"/>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
