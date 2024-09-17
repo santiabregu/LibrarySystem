@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Employee menu item definition -->
+        <record id="book_form_view" model="ir.ui.view">
+            <field name="name">library.book.form</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <form string="Book">
+                    <sheet>
+                            <div class="oe_title">
+                                <label for="title"/>
+                                <h1>
+                                    <field name="title" placeholder="Title"/>
+                                </h1>
+                            </div>
+                            <group>
+                                <field name="id"/>
+                                <field name="author_id"/>
+                                <field name="published_at"/>
+                                <field name="genre_ids"/>
+                                <field name="copies_available"/>
+                                <field name="copies_total"/>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="book_tree_view" model="ir.ui.view">
+            <field name="name">library.book.tree</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <tree string="Book">
+                    <field name="title"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="book_search_view" model="ir.ui.view">
+            <field name="name">library.book.search</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <search string="Book">
+                    <field name="title"/>
+                    <field name="genre_ids"/>
+                    <field name="author_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="book_act_window" model="ir.actions.act_window">
+            <field name="name">Book</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">library.book</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Book.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="book_root" name="Book" parent="commprog_root" sequence="20"/>
+        <menuitem name="Book" id="book_menu" parent="book_root" action="book_act_window" sequence="10"/>
+    </data>
+</odoo>

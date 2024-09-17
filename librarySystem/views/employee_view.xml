@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Root menu item definition -->
+        <menuitem id="commprog_root" name="Library"/>
+
+        <!-- Employee menu item definition -->
+        <record id="employee_form_view" model="ir.ui.view">
+            <field name="name">library.employee.form</field>
+            <field name="model">library.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <sheet>
+                        <group>
+                            <field name="id"/>
+                            <field name="name"/>
+                            <field name="bank"/>
+                            <field name="salary"/>
+                            <field name="phone_number"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="employee_tree_view" model="ir.ui.view">
+            <field name="name">library.employee.tree</field>
+            <field name="model">library.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Employee">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="employee_search_view" model="ir.ui.view">
+            <field name="name">library.employee.search</field>
+            <field name="model">library.employee</field>
+            <field name="arch" type="xml">
+                <search string="Employee">
+                    <field name="name"/>
+                    <field name="salary"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="employee_act_window" model="ir.actions.act_window">
+            <field name="name">Employee</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">library.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    There is no examples click here to add new Employee.
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Employee" id="employee_menu" parent="commprog_root" action="employee_act_window"/>
+    </data>
+</odoo>

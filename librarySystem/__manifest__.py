@@ -1,0 +1,21 @@
+{
+    'name': 'Library System',
+    'version': '1.0',
+    'summary': 'Summery',
+    'description': 'Description',
+    'category': 'Category',
+    'sequence': -100,
+    'author': 'Author',
+    'website': 'Website',
+    'depends': ['base'],
+    'data': [
+        'views/employee_view.xml',
+        'views/member_view.xml',
+        'views/book_view.xml',
+        'views/genre_view.xml',
+        'views/author_view.xml',
+    ],
+    'installable': True,
+    'auto_install': False,
+    'application': True,
+}
