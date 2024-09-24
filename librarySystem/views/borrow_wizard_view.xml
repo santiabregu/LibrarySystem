@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="view_borrow_wizard_form" model="ir.ui.view">
+            <field name="name">borrow.wizard.form</field>
+            <field name="model">library.borrow.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create Borrow">
+                    <group>
+                        <field name="member_id"/>
+                        <field name="book_id"/>
+                        <field name="borrow_employee_id"/>
+                        <field name="borrowed_at"/>
+                        <field name="return_due_date" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button string="Create" type="object" name="action_create_borrow" class="oe_highlight"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
