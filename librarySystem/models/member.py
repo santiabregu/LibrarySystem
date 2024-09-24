@@ -1,11 +1,12 @@
 from odoo import fields, models, api
+import logging
 
+_logger = logging.getLogger(__name__)
 
 class Member(models.Model):
     _name = 'library.member'
     _description = 'Member Details'
 
-    # a member has various borrowed books
     borrow_ids = fields.One2many(comodel_name='library.borrow', inverse_name='member_id', string='Borrows')
     name = fields.Char(string='Name', required=True)
     surname = fields.Char(string='Surname', required=True)
@@ -15,12 +16,15 @@ class Member(models.Model):
     address = fields.Char(string='Address', required=True)
     last_subscription_id = fields.Many2one('library.member_subscription', string='Last Subscription')
 
-    @api.model
-    def update_last_subscription(self, member_id):
-        member = self.search([('id', '=', member_id)], limit=1)
-        if member:
-            last_subscription = self.env['library.member_subscription'].search(
-                [('member_id', '=', member_id)], order='sub_start_date desc', limit=1
-            )
-            if last_subscription:
-                member.last_subscription_id = last_subscription.id
+    def action_open_borrow_wizard(self):
+        _logger.info('Opening borrow wizard for member ID: %s', self.id)
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Create Borrow',
+            'res_model': 'library.borrow.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_member_id': self.id,
+            },
+        }

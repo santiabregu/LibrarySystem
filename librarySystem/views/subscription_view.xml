@@ -3,9 +3,9 @@
     <data>
 
         <!-- Employee menu item definition -->
-        <record id="memberSubscription_form_view" model="ir.ui.view">
-            <field name="name">library.memberSubscription.form</field>
-            <field name="model">library.memberSubscription</field>
+        <record id="subscription_form_view" model="ir.ui.view">
+            <field name="name">library.subscription.form</field>
+            <field name="model">library.subscription</field>
             <field name="arch" type="xml">
                 <form string="Subscription">
                     <sheet>
@@ -20,40 +20,38 @@
             </field>
         </record>
 
-        <record id="author_tree_view" model="ir.ui.view">
-            <field name="name">library.author.tree</field>
-            <field name="model">library.author</field>
+        <record id="subscription_tree_view" model="ir.ui.view">
+            <field name="name">library.subscription.tree</field>
+            <field name="model">library.subscription</field>
             <field name="arch" type="xml">
-                <tree string="Author">
-                    <field name="name"/>
+                <tree string="Subscription">
+                    <field name="subscription_name"/>
                 </tree>
             </field>
         </record>
 
-        <record id="author_search_view" model="ir.ui.view">
-            <field name="name">library.author.search</field>
-            <field name="model">library.author</field>
+        <record id="subscription_search_view" model="ir.ui.view">
+            <field name="name">library.subscription.search</field>
+            <field name="model">library.subscription</field>
             <field name="arch" type="xml">
-                <search string="Author">
-                    <field name="name"/>
-                    <field name="surname"/>
-                    <field name="id"/>
+                <search string="Duration in weeks">
+                    <field name="duration_in_weeks"/>
                 </search>
             </field>
         </record>
 
-        <record id="author_act_window" model="ir.actions.act_window">
-            <field name="name">Author</field>
+        <record id="subscription_act_window" model="ir.actions.act_window">
+            <field name="name">Subscription</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">library.author</field>
+            <field name="res_model">library.subscription</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    There is no examples click here to add new Author.
+                    There is no examples click here to add new Subscription.
                 </p>
             </field>
         </record>
 
-        <menuitem name="Author" id="author_menu" parent="book_root" action="author_act_window" sequence="30"/>
+        <menuitem name="Subscription" id="subscription_menu" parent="commprog_root" action="subscription_act_window" sequence="30"/>
     </data>
 </odoo>

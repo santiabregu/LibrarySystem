@@ -11,7 +11,7 @@ class CommprogBorrow(models.Model):
     return_due_date = fields.Date(string='Return Due Date', required=True)
     returned = fields.Boolean(string='Returned', default=False)
     returned_at = fields.Date(string='Returned At')
-    return_employee_id = fields.Many2one(comodel_name='library.employee', string='Return Employee', required=True)
+    return_employee_id = fields.Many2one(comodel_name='library.employee', string='Return Employee')
     return_condition = fields.Selection(string='Condition', selection=[('good', 'Good'), ('damaged', 'Damaged')],
                                         default='good')
 

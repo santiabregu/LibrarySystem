@@ -11,9 +11,11 @@
     'data': [
         'views/employee_view.xml',
         'views/member_view.xml',
+        'views/borrow_wizard_view.xml',
         'views/book_view.xml',
         'views/genre_view.xml',
         'views/author_view.xml',
+        'views/subscription_view.xml',
     ],
     'installable': True,
     'auto_install': False,

@@ -8,5 +8,7 @@ from . import borrow
 from . import memberSubscription
 from . import ticket
 from . import subscription
+from . import borrow_wizard
+
 
 
