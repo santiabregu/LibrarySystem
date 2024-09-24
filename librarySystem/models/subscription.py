@@ -7,5 +7,5 @@ class Subscription(models.Model):
 
     subscription_name = fields.Char(string='Name', required=True)
     price = fields.Float(string='Price', required=True)
-    duration_in_weeks = fields.Integer(string='Duration', required=True)
+    duration_in_weeks = fields.Integer(string='Duration in weeks', required=True)
 
