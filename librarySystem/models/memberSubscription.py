@@ -25,8 +25,8 @@ class CommprogMemberSubscription(models.Model):
                 subscription = self.env['library.subscription'].search([('subscription_name', '=', record.subscription_type)], limit=1)
                 record.sub_end_date = record.sub_start_date + timedelta(weeks=subscription.duration_in_weeks)
 
-    @api.model
-    def create(self, vals):
-        record = super(CommprogMemberSubscription, self).create(vals)
-        record.member_id.update_last_member_subscription(record.member_id.id, record.id)
-        return record
+    @api.depends('subscription_ids.sub_start_date', 'subscription_ids.is_active')
+    def _compute_last_member_subscription(self):
+        for member in self:
+            subscriptions = self.env['library.member_subscription'].search([('member_id', '=', member.id)], order='sub_start_date desc')
+            member.last_member_subscription_id = subscriptions[0] if subscriptions else False

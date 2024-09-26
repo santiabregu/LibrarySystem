@@ -9,3 +9,9 @@ class Subscription(models.Model):
     price = fields.Float(string='Price', required=True)
     duration_in_weeks = fields.Integer(string='Duration in weeks', required=True)
 
+    def name_get(self):
+        result = []
+        for record in self:
+            name = record.subscription_name
+            result.append((record.id, name))
+        return result

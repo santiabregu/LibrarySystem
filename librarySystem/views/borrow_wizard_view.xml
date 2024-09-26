@@ -6,7 +6,7 @@
             <field name="arch" type="xml">
                 <form string="Create Borrow">
                     <group>
-                        <field name="member_id"/>
+                        <field name="member_id" readonly="1"/>
                         <field name="book_id"/>
                         <field name="borrow_employee_id"/>
                         <field name="borrowed_at"/>
