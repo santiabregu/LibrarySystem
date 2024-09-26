@@ -38,7 +38,7 @@ class Member(models.Model):
         sub_start_date = fields.Date.today()
         sub_end_date = sub_start_date + timedelta(weeks=subscription.duration_in_weeks)
         self.env['library.member_subscription'].create({
-            'subscription_type': subscription.subscription_name,
+            'subscription_type': subscription.id,  # Use the ID of the subscription
             'member_id': member.id,
             'employee_id': self.env.user.employee_id.id,
             'sub_start_date': sub_start_date,

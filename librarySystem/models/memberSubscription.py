@@ -5,7 +5,7 @@ class CommprogMemberSubscription(models.Model):
     _name = 'library.member_subscription'
 
     code = fields.Char(string='Code', required=True, default='New')
-    subscription_type = fields.Char(string='Subscription Type', required=True)
+    subscription_type = fields.Many2one('library.subscription', string='Subscription Type', required=True)
     member_id = fields.Many2one('library.member', string='Member', required=True)
     employee_id = fields.Many2one('library.employee', string='Employee')
     pay_method = fields.Selection(string='Pay Method', selection=[('cash', 'Cash'), ('card', 'Card')], default='cash')
@@ -22,11 +22,10 @@ class CommprogMemberSubscription(models.Model):
     def _compute_sub_end_date(self):
         for record in self:
             if record.subscription_type:
-                subscription = self.env['library.subscription'].search([('subscription_name', '=', record.subscription_type)], limit=1)
-                record.sub_end_date = record.sub_start_date + timedelta(weeks=subscription.duration_in_weeks)
+                record.sub_end_date = record.sub_start_date + timedelta(weeks=record.subscription_type.duration_in_weeks)
 
-    @api.depends('subscription_ids.sub_start_date', 'subscription_ids.is_active')
-    def _compute_last_member_subscription(self):
-        for member in self:
-            subscriptions = self.env['library.member_subscription'].search([('member_id', '=', member.id)], order='sub_start_date desc')
-            member.last_member_subscription_id = subscriptions[0] if subscriptions else False
+    @api.model
+    def create(self, vals):
+        record = super(CommprogMemberSubscription, self).create(vals)
+        record.member_id._compute_last_member_subscription()
+        return record
