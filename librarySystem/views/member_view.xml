@@ -8,18 +8,29 @@
                 <form string="Member">
                     <sheet>
                         <group>
-                            <field name="id"/>
                             <field name="name"/>
                             <field name="surname"/>
-                            <field name="membership_date"/>
                             <field name="email"/>
                             <field name="phone"/>
                             <field name="address"/>
-                            <field name="subscription_type" required="1" widget="many2one" options="{'no_create': True, 'search_default_subscription_name': True}" invisible="id"/>
-                            <field name="last_member_subscription_id" invisible="not id"/>
-                            <field name="is_last_subscription_active" invisible="not id"/>
-                            <button name="action_open_borrow_wizard" type="object" string="Add Borrow" class="oe_highlight" invisible="not (id and is_last_subscription_active)"/>
                         </group>
+                        <notebook>
+                            <page string="Subscription">
+                                <field name="subscription_ids" context="{'default_member_id': active_id}">
+                                    <form>
+                                        <group>
+                                            <field name="subscription_type"/>
+                                            <field name="sub_start_date"/>
+                                            <field name="sub_end_date"/>
+                                            <field name="is_active"/>
+                                            <field name="code"/>
+                                            <field name="employee_id"/>
+                                            <field name="pay_method"/>
+                                        </group>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>

@@ -1,7 +1,7 @@
 from datetime import timedelta
-
 from odoo import fields, models, api
 import logging
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -12,13 +12,14 @@ class Member(models.Model):
     borrow_ids = fields.One2many(comodel_name='library.borrow', inverse_name='member_id', string='Borrows')
     name = fields.Char(string='Name', required=True)
     surname = fields.Char(string='Surname', required=True)
-    membership_date = fields.Date(string='Membership Date', required=True)
+    membership_date = fields.Date(string='Membership Date')
     email = fields.Char(string='Email', required=True)
     phone = fields.Char(string='Phone', required=True)
     address = fields.Char(string='Address', required=True)
     last_member_subscription_id = fields.Many2one('library.member_subscription', string='Last Subscription', compute='_compute_last_member_subscription', store=True)
-    subscription_type = fields.Many2one('library.subscription', string='Subscription Type', required=True)
     is_last_subscription_active = fields.Boolean(string='Is Last Subscription Active', compute='_compute_is_last_subscription_active')
+    is_subscription_saved = fields.Boolean(string='Is Subscription Saved', default=False)
+    subscription_ids = fields.One2many('library.member_subscription', 'member_id', string='Subscriptions')
 
     @api.depends('last_member_subscription_id')
     def _compute_is_last_subscription_active(self):
@@ -31,20 +32,11 @@ class Member(models.Model):
             subscriptions = self.env['library.member_subscription'].search([('member_id', '=', member.id)], order='sub_start_date desc')
             member.last_member_subscription_id = subscriptions[0] if subscriptions else False
 
-    @api.model
-    def create(self, vals):
-        member = super(Member, self).create(vals)
-        subscription = self.env['library.subscription'].browse(vals['subscription_type'])
-        sub_start_date = fields.Date.today()
-        sub_end_date = sub_start_date + timedelta(weeks=subscription.duration_in_weeks)
-        self.env['library.member_subscription'].create({
-            'subscription_type': subscription.id,  # Use the ID of the subscription
-            'member_id': member.id,
-            'employee_id': self.env.user.employee_id.id,
-            'sub_start_date': sub_start_date,
-            'sub_end_date': sub_end_date,
-        })
-        return member
+    def _update_membership_date(self):
+        for member in self:
+            subscriptions = self.env['library.member_subscription'].search([('member_id', '=', member.id)], order='sub_start_date asc')
+            if subscriptions:
+                member.membership_date = subscriptions[0].sub_start_date
 
     def action_open_borrow_wizard(self):
         _logger.info('Opening borrow wizard for member ID: %s', self.id)
@@ -58,6 +50,14 @@ class Member(models.Model):
                 'default_member_id': self.id,
             },
         }
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('subscription_ids'):
+            raise ValidationError("You cannot create a member without a subscription.")
+        if len(vals.get('subscription_ids')) > 1:
+            raise ValidationError("You can only add one subscription when creating a new member.")
+        return super(Member, self).create(vals)
 
     def unlink(self):
         for member in self:
