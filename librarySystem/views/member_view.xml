@@ -12,6 +12,8 @@
                             <field name="email"/>
                             <field name="phone"/>
                             <field name="address"/>
+                            <field name="membership_date" readonly="1" invisible="not id"/>
+                            <button string="Add Borrow" type="object" name="action_open_borrow_wizard" class="oe_highlight" invisible="not id"/>
                         </group>
                         <notebook>
                             <page string="Subscription">

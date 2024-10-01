@@ -3,7 +3,7 @@ from odoo import fields, models, api
 import random
 import string
 
-class CommprogMemberSubscription(models.Model):
+class MemberSubscription(models.Model):
     _name = 'library.member_subscription'
 
     code = fields.Char(string='Code', required=True, default='New')

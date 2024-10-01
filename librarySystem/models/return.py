@@ -1,6 +1,6 @@
 from odoo import fields, models, api
 
-class CommprogReturn(models.Model):
+class Return(models.Model):
     _name = 'library.return'
     _rec_name = 'return'
 

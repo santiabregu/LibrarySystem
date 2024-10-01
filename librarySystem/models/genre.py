@@ -1,6 +1,6 @@
 from odoo import fields, models
 
-class CommprogGenre(models.Model):
+class Genre(models.Model):
     _name = 'library.genre'
     _description = 'Genre'
 

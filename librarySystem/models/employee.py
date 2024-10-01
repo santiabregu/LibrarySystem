@@ -1,7 +1,7 @@
 from odoo import fields, models
 
 
-class CommprogEmployee(models.Model):
+class Employee(models.Model):
     _name = 'library.employee'
     _description = 'Description'
 

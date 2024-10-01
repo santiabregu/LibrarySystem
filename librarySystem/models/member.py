@@ -57,8 +57,17 @@ class Member(models.Model):
             raise ValidationError("You cannot create a member without a subscription.")
         if len(vals.get('subscription_ids')) > 1:
             raise ValidationError("You can only add one subscription when creating a new member.")
-        return super(Member, self).create(vals)
 
+        member = super(Member, self).create(vals)
+
+        # Force computation of last_member_subscription_id
+        member._compute_last_member_subscription()
+        member._compute_is_last_subscription_active()
+
+        # Update membership date
+        member._update_membership_date()
+
+        return member
     def unlink(self):
         for member in self:
             # Delete related borrows

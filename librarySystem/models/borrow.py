@@ -1,6 +1,6 @@
 from odoo import fields, models, api
 
-class CommprogBorrow(models.Model):
+class Borrow(models.Model):
     _name = 'library.borrow'
 
     # every borrow has one member, one book , one employee

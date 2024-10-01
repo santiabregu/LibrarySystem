@@ -1,7 +1,7 @@
 from odoo import fields, models, api
 from odoo.exceptions import UserError
 
-class CommprogTicket(models.Model):
+class Ticket(models.Model):
     _name = 'library.ticket'
     _description = 'Description'
     _rec_name = 'code'

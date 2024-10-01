@@ -1,6 +1,6 @@
 from odoo import fields, models
 
-class CommprogAuthor(models.Model):
+class Author(models.Model):
     _name = 'library.author'
     _description = 'Author'
 

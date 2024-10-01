@@ -1,6 +1,6 @@
 from odoo import fields, models
 
-class CommprogPublisher(models.Model):
+class Publisher(models.Model):
     _name = 'library.publisher'
     _description = 'Description'
 
