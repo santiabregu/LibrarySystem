@@ -12,7 +12,7 @@ class Book(models.Model):
     copies_available = fields.Integer(string='Copies Available', required=True)
     copies_total = fields.Integer(string='Total Copies', required=True)
     borrow_ids = fields.One2many(comodel_name='library.borrow', inverse_name='book_id', string='Borrows')
-
+    image = fields.Binary(string="Image")
     @api.constrains('copies_available')
     def _check_quantity(self):
         for book in self:
