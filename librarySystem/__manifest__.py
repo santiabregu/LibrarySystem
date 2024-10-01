@@ -11,6 +11,7 @@
     'data': [
         'views/employee_view.xml',
         'views/member_view.xml',
+        'views/borrow_view.xml',
         'views/borrow_wizard_view.xml',
         'views/book_view.xml',
         'views/genre_view.xml',

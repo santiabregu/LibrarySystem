@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="view_borrow_form" model="ir.ui.view">
+            <field name="name">library.borrow.form</field>
+            <field name="model">library.borrow</field>
+            <field name="arch" type="xml">
+                <form string="Borrow">
+                    <group>
+                        <field name="member_id" readonly="1"/>
+                        <field name="book_id"/>
+                        <field name="borrow_employee_id"/>
+                        <field name="borrowed_at"/>
+                        <field name="return_due_date" readonly="1"/>
+                        <field name="returned"/>
+                        <field name="returned_at" invisible="1 if not returned else 0"/>
+                        <field name="return_employee_id" invisible="1 if not returned else 0"/>
+                        <field name="return_condition" invisible="1 if not returned else 0"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

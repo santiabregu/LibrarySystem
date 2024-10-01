@@ -20,6 +20,15 @@ class Member(models.Model):
     is_last_subscription_active = fields.Boolean(string='Is Last Subscription Active', compute='_compute_is_last_subscription_active')
     is_subscription_saved = fields.Boolean(string='Is Subscription Saved', default=False)
     subscription_ids = fields.One2many('library.member_subscription', 'member_id', string='Subscriptions')
+    borrow_info_html = fields.Html(string='Books borrowed', compute='_compute_borrow_info_html')  # Add this line
+
+    @api.depends('borrow_ids')
+    def _compute_borrow_info_html(self):
+        for member in self:
+            borrow_info_html = []
+            for borrow in member.borrow_ids:
+                borrow_info_html.append(f'<a href="/web#id={borrow.id}&model=library.borrow&view_type=form" target="_blank">Borrow ID: {borrow.id}, Book Title: {borrow.book_id.title}</a>')
+            member.borrow_info_html = '<br/>'.join(borrow_info_html)
 
     @api.depends('last_member_subscription_id')
     def _compute_is_last_subscription_active(self):

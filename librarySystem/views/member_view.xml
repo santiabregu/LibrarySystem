@@ -15,14 +15,14 @@
                             <field name="membership_date" readonly="1" invisible="not id"/>
                             <button string="Add Borrow" type="object" name="action_open_borrow_wizard" class="oe_highlight" invisible="not id"/>
                         </group>
+                        <group>
+                         <field name="borrow_info_html" widget="html" readonly="1" invisible="not id"/>                        </group>
                         <notebook>
                             <page string="Subscription">
-                                <!-- Only show the subscription fields when the member is already created (has an ID) -->
                                 <group invisible="not id">
                                     <field name="last_member_subscription_id" string="Last Subscription ID" readonly="1"/>
                                     <field name="is_last_subscription_active" string="Is Last Subscription Active" readonly="1"/>
                                 </group>
-                                <!-- If the member is being created, allow adding subscriptions -->
                                 <field name="subscription_ids" context="{'default_member_id': active_id}" invisible="id">
                                     <form>
                                         <group string="Subscription Details">

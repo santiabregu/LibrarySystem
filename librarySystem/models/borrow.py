@@ -3,7 +3,6 @@ from odoo import fields, models, api
 class Borrow(models.Model):
     _name = 'library.borrow'
 
-    # every borrow has one member, one book , one employee
     member_id = fields.Many2one(comodel_name='library.member', string='Member', required=True)
     book_id = fields.Many2one(comodel_name='library.book', string='Book', required=True)
     borrow_employee_id = fields.Many2one(comodel_name='library.employee', string='Employee', required=True)
@@ -12,8 +11,7 @@ class Borrow(models.Model):
     returned = fields.Boolean(string='Returned', default=False)
     returned_at = fields.Date(string='Returned At')
     return_employee_id = fields.Many2one(comodel_name='library.employee', string='Return Employee')
-    return_condition = fields.Selection(string='Condition', selection=[('good', 'Good'), ('damaged', 'Damaged')],
-                                        default='good')
+    return_condition = fields.Selection(string='Condition', selection=[('good', 'Good'), ('damaged', 'Damaged')], default='good')
 
     @api.model
     def create_multiple_borrows(self, borrows_data):
