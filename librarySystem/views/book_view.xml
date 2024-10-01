@@ -17,7 +17,7 @@
                             <field name="author_id"/>
                             <field name="published_at"/>
                             <field name="genre_ids"/>
-                            <field name="copies_available"/>
+                            <field name="copies_available" readonly="1"/>
                             <field name="copies_total"/>
                             <field name="image" widget="image" class="oe_avatar" options='{"size": [90, 90]}'/> <!-- Ensure the widget is set to image -->
                         </group>

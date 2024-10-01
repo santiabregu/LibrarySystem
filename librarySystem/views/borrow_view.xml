@@ -7,14 +7,15 @@
                 <form string="Borrow">
                     <group>
                         <field name="member_id" readonly="1"/>
-                        <field name="book_id"/>
-                        <field name="borrow_employee_id"/>
-                        <field name="borrowed_at"/>
+                        <field name="book_id" readonly="1"/>
+                        <field name="borrow_employee_id" readonly="1"/>
+                        <field name="borrowed_at" readonly="1"/>
                         <field name="return_due_date" readonly="1"/>
+                        <field name="borrow_finalized" invisible="1"/>
                         <field name="returned"/>
-                        <field name="returned_at" invisible="1 if not returned else 0"/>
-                        <field name="return_employee_id" invisible="1 if not returned else 0"/>
-                        <field name="return_condition" invisible="1 if not returned else 0"/>
+                        <field name="returned_at" invisible="1 if not returned else 0" readonly="1 if borrow_finalized else 0"/>
+                        <field name="return_employee_id" invisible="1 if not returned else 0" readonly="1 if borrow_finalized else 0"/>
+                        <field name="return_condition" invisible="1 if not returned else 0" readonly="1 if borrow_finalized else 0"/>
                     </group>
                 </form>
             </field>

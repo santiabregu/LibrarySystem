@@ -26,7 +26,7 @@ class Member(models.Model):
     def _compute_borrow_info_html(self):
         for member in self:
             borrow_info_html = []
-            for borrow in member.borrow_ids:
+            for borrow in member.borrow_ids.filtered(lambda b: not b.returned):
                 borrow_info_html.append(f'<a href="/web#id={borrow.id}&model=library.borrow&view_type=form" target="_blank">Borrow ID: {borrow.id}, Book Title: {borrow.book_id.title}</a>')
             member.borrow_info_html = '<br/>'.join(borrow_info_html)
 

@@ -13,7 +13,7 @@
                             <field name="phone"/>
                             <field name="address"/>
                             <field name="membership_date" readonly="1" invisible="not id"/>
-                            <button string="Add Borrow" type="object" name="action_open_borrow_wizard" class="oe_highlight" invisible="not id"/>
+                            <button string="Add Borrow" type="object" name="action_open_borrow_wizard" class="oe_highlight" invisible="not id or not is_last_subscription_active"/>
                         </group>
                         <group>
                          <field name="borrow_info_html" widget="html" readonly="1" invisible="not id"/>                        </group>
