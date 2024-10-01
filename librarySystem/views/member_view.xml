@@ -1,6 +1,5 @@
 <odoo>
     <data>
-        <!-- Employee menu item definition -->
         <record id="member_form_view" model="ir.ui.view">
             <field name="name">library.member.form</field>
             <field name="model">library.member</field>
@@ -16,16 +15,25 @@
                         </group>
                         <notebook>
                             <page string="Subscription">
-                                <field name="subscription_ids" context="{'default_member_id': active_id}">
+                                <!-- Only show the subscription fields when the member is already created (has an ID) -->
+                                <group invisible="not id">
+                                    <field name="last_member_subscription_id" string="Last Subscription ID" readonly="1"/>
+                                    <field name="is_last_subscription_active" string="Is Last Subscription Active" readonly="1"/>
+                                </group>
+                                <!-- If the member is being created, allow adding subscriptions -->
+                                <field name="subscription_ids" context="{'default_member_id': active_id}" invisible="id">
                                     <form>
+                                        <group string="Subscription Details">
+                                            <field name="subscription_type" string="Subscription Type" placeholder="Select the type of subscription"/>
+                                            <field name="sub_start_date" string="Start Date" placeholder="Select the start date"/>
+                                            <field name="sub_end_date" string="End Date" readonly="1" placeholder="Select the end date"/>
+                                            <field name="is_active" string="Is Active" placeholder="Is the subscription active?"/>
+                                        </group>
+                                        <separator string="Additional Information"/>
                                         <group>
-                                            <field name="subscription_type"/>
-                                            <field name="sub_start_date"/>
-                                            <field name="sub_end_date"/>
-                                            <field name="is_active"/>
-                                            <field name="code"/>
-                                            <field name="employee_id"/>
-                                            <field name="pay_method"/>
+                                            <field name="code" string="Subscription Code" readonly="1" placeholder="Enter the subscription code"/>
+                                            <field name="employee_id" string="Employee" placeholder="Select the employee"/>
+                                            <field name="pay_method" string="Payment Method" placeholder="Select the payment method"/>
                                         </group>
                                     </form>
                                 </field>
