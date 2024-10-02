@@ -7,10 +7,14 @@
                 <form string="Create Borrow">
                     <group>
                         <field name="member_id" readonly="1"/>
-                        <field name="book_id"/>
-                        <field name="borrow_employee_id"/>
-                        <field name="borrowed_at"/>
-                        <field name="return_due_date" readonly="1"/>
+                        <field name="borrow_ids">
+                            <tree editable="bottom">
+                                <field name="book_id"/>
+                                <field name="borrow_employee_id"/>
+                                <field name="borrowed_at"/>
+                                <field name="return_due_date" readonly="1"/>
+                            </tree>
+                        </field>
                     </group>
                     <footer>
                         <button string="Create" type="object" name="action_create_borrow" class="oe_highlight"/>

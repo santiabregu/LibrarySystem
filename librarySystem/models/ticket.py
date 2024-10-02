@@ -20,7 +20,7 @@ class Ticket(models.Model):
             raise UserError('No borrows provided to create a ticket.')
 
         member = borrows[0].member_id
-        employee = borrows[0].employee_id
+        employee = borrows[0].borrow_employee_id
         date = borrows[0].borrowed_at
 
         ticket_lines = []
@@ -46,10 +46,8 @@ class Ticket(models.Model):
             if book.copies_available > 0:
                 book.write({'copies_available': book.copies_available - 1})
             else:
-                raise UserError('No copies available for the book: %s' % book.name)
+                raise UserError('No copies available for the book: %s' % book.title)
         self.state = 'done'
-
-
 class CommprogTicketLine(models.Model):
     _name = 'library.ticket.line'
 

@@ -48,7 +48,7 @@ class Borrow(models.Model):
             if record.book_id.copies_available > 0:
                 record.book_id.copies_available -= 1
             else:
-                raise ValidationError("No copies available for the book: %s" % record.book_id.name)
+                raise ValidationError("No copies available for the book: %s" % record.book_id.title)
 
 
 
