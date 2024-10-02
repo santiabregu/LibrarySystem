@@ -17,6 +17,8 @@
         'views/genre_view.xml',
         'views/author_view.xml',
         'views/subscription_view.xml',
+        'wizard/borrow_report_view.xml',
+        'report/borrow_report.xml',
     ],
     'installable': True,
     'auto_install': False,
